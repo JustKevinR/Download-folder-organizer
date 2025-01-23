@@ -25,7 +25,7 @@ docExt = ['.doc', '.docx', '.pdf']
 imageExt = ['.png', '.jpeg', '.jpg', '.jfi', '.jpe', '.jif', '.jfif', '.heif', '.heic',
             '.gif', '.svg', '.svg2', '.eps', '.webp', '.tiff', '.tif', '.ind', '.ai', '.psd']
 exeExt = ['.exe']
-archiveExt = ['.zip', '.rar']
+archiveExt = ['.zip', '.rar', '7z']
 
 
 def moveFile(dest, currDir, name):
@@ -38,6 +38,8 @@ def moveFile(dest, currDir, name):
         while exists(join(dest, newName)):
             newName = f'{filename} ({str(count)}){ext}'
             count += 1
+    if name.endswith(('.crdownload', '.download', '.tmp')):
+        return  # ignore files with these extensions
     oldPath = join(currDir, name)
     newPath = join(dest, newName)
     move(oldPath, newPath)
