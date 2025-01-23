@@ -8,6 +8,7 @@ from watchdog.events import FileSystemEventHandler
 import pystray
 from pystray import Icon as icon, Menu as menu, MenuItem as item
 from PIL import Image
+import pathlib
 
 # Directories and extensions
 sourceDir = 'C:/Users/USERNAME/Downloads'
@@ -30,20 +31,20 @@ archiveExt = ['.zip', '.rar', '7z']
 
 def moveFile(dest, currDir, name):
     """Move a file, renaming if it already exists."""
-    fileExists = exists(join(dest, name))
-    newName = name
-    if fileExists:
-        filename, ext = splitext(name)
-        count = 1
-        while exists(join(dest, newName)):
-            newName = f'{filename} ({str(count)}){ext}'
-            count += 1
-    if name.endswith(('.crdownload', '.download', '.tmp')):
+    file_path = pathlib.Path(name)
+    if file_path.suffix in ['.crdownload', '.download', '.tmp']:
         return  # ignore files with these extensions
+    new_name = file_path.name
+    if exists(join(dest, new_name)):
+        base = file_path.stem
+        suffix = file_path.suffix
+        count = 1
+        while exists(join(dest, new_name)):
+            new_name = f'{base} ({str(count)}){suffix}'
+            count += 1
     oldPath = join(currDir, name)
-    newPath = join(dest, newName)
+    newPath = join(dest, new_name)
     move(oldPath, newPath)
-
 
 class Watcher(FileSystemEventHandler):
     def on_modified(self, _):
