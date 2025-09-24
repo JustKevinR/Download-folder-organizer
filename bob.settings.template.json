@@ -1,0 +1,39 @@
+{
+  "sourceDir": "C:/Users/USERNAME/Downloads",
+  "destinations": {
+    "Images": "C:/Users/USERNAME/Downloads/Images",
+    "Audio": "C:/Users/USERNAME/Downloads/Audio",
+    "Video": "C:/Users/USERNAME/Downloads/Video",
+    "Docs": "C:/Users/USERNAME/Downloads/Docs",
+    "Executables": "C:/Users/USERNAME/Downloads/Executables",
+    "Archives": "C:/Users/USERNAME/Downloads/Archives",
+    "Code": "C:/Users/USERNAME/Downloads/Code",
+    "Fonts": "C:/Users/USERNAME/Downloads/Fonts",
+    "Torrents": "C:/Users/USERNAME/Downloads/Torrents",
+    "3D": "C:/Users/USERNAME/Downloads/3D"
+  },
+  "icons": {
+    "enabled": true,
+    "iconDir": "./icons",
+    "map": {
+      "Images": "Images.ico",
+      "Audio": "Audio.ico",
+      "Video": "Video.ico",
+      "Docs": "Docs.ico",
+      "Executables": "Executables.ico",
+      "Archives": "Archives.ico",
+      "Code": "Code.ico",
+      "Fonts": "Fonts.ico",
+      "Torrents": "Torrents.ico",
+      "3D": "3D.ico"
+    }
+  },
+  "startup": {
+    "delaySeconds": 60,
+    "toasts": true
+  },
+  "exit": {
+    "delaySeconds": 8,
+    "waitForKey": false
+  }
+}
